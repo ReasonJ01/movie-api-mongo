@@ -17,6 +17,7 @@
 			<th>Title</th>
 			<th>Year</th>
 			<th>Remove</th>
+			<th>Watched</th>
 		</tr>
 		</thead>
 		<tbody>
@@ -28,6 +29,16 @@
 				<td>
 					<form method="POST" action="/delete/{{item._id}}">
 						<button class="button is-danger">Remove</button>
+					</form>
+				</td>
+				<td>
+					{% if item.watched == 'true' %}
+    					 <form method="POST" action="/unwatched/{{item._id}}">
+						<button class="button is-success">Unwatched</button>
+					{% else %}
+    					 <form method="POST" action="/watched/{{item._id}}">
+						<button class="button is-success">Watched</button>
+					{% endif %}
 					</form>
 				</td>
 			</tr>
